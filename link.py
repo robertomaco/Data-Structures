@@ -12,8 +12,8 @@ class SLinkedList:
         printval = self.headval
         while printval is not None:
             if printval is self.headval:
-                print ("Head")
-            print (printval.dataval)
+                print "Head"
+            print printval.dataval
             printval = printval.nextval
 
     def createHead(self, value):
