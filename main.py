@@ -16,7 +16,7 @@ while choice != 5:
         val = input("Enter the value you would like to prepend to the list: ")
         llist.prepend(val)
     if choice == 4:
-        llist.listprint()
+        llist.listPrint()
         print("")
     if choice == 5:
         break
