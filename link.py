@@ -88,29 +88,26 @@ class SLinkedList:
             count+=1
         return count
 
-    def sortList(self): #Sorts the list NOT WORKING
+    def sortList(self): #Sorts the list
         head = self.listHead
-        val = self.listLength()
+        val = self.listLength() #Gets length of list
         count = 0
-        print "List length: ", val
-        while head is not None:
-            self.listPrint()
-            if head.next is not None and head == self.listHead and head.next.data < head.data:
-                headtemp = head.next
-                self.listHead = headtemp
-                head.next = headtemp.next
-                headtemp.next = head
-            elif head.next is not None and head != self.listHead and head.next.data < head.data:
-                temp = head.next
-                ahead = temp.next
-                temp.next = head
-                head.next = ahead
-            head = head.next
+        while count <= val: #Loops the list to 
+            while head is not None:
+                if head is not None and head == self.listHead and head.next.data < head.data: #checks if the head needs to be swapped
+                    headtemp = head.next
+                    self.listHead = headtemp
+                    head.next = headtemp.next
+                    headtemp.next = head
+                elif head is not None and head != self.listHead:
+                    if head.next is not None and head.next.data < head.data: #checks if the node needs swapped
+                        ahead = head.next
+                        head.next = ahead.next
+                        ahead.next = head
+                        temp.next = ahead
+                    #temp->ahead->head
 
-llist = SLinkedList()
-llist.addVal(5)
-llist.addVal(4)
-llist.addVal(3)
-llist.addVal(2)
-llist.sortList()
-
+                temp = head
+                head = head.next
+            head = self.listHead
+            count+=1
