@@ -63,11 +63,11 @@ class SLinkedList:
     
     def insertAfterKey(self, key, value): #Insert value in front of key
         head = self.listHead
-        newNode = Node(value)
+        newNode = Node(value) #Creates new node
         if head.data == key:
-            temp = head.next
-            head.next = newNode
-            newNode.next = temp
+            temp = head.next #sets temp = head->next
+            head.next = newNode #sets head->next to new node
+            newNode.next = temp #sets newnode->next to temp head->newnode->temp
         else:
             while head.data != key and head is not None:
                 head = head.next
@@ -90,17 +90,21 @@ class SLinkedList:
 
     def sortList(self): #Sorts the list NOT WORKING
         head = self.listHead
+        val = self.listLength()
+        count = 0
+        print "List length: ", val
         while head is not None:
             self.listPrint()
-            if head.next is not None and head == self.listHead and head.next > head:
+            if head.next is not None and head == self.listHead and head.next.data < head.data:
                 headtemp = head.next
                 self.listHead = headtemp
                 head.next = headtemp.next
                 headtemp.next = head
-            if head.next is not None and head != self.listHead and head.next > head:
+            elif head.next is not None and head != self.listHead and head.next.data < head.data:
                 temp = head.next
-                head.next = temp.next
+                ahead = temp.next
                 temp.next = head
+                head.next = ahead
             head = head.next
 
 llist = SLinkedList()
@@ -108,6 +112,5 @@ llist.addVal(5)
 llist.addVal(4)
 llist.addVal(3)
 llist.addVal(2)
-llist.prepend(1)
-llist.insertAfterKey(1, 9)
-llist.listPrint()
+llist.sortList()
+
