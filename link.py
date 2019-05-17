@@ -64,30 +64,33 @@ class SLinkedList:
     def listLength(self):
         count = 0
         head = self.listHead
-        while head.next is not None:
+        while head is not None:
             head = head.next
             count+=1
         return count
 
     def sortList(self):
         head = self.listHead
-        while head.next is not None:
-            head = head.next
-            if head.next is not None:
-                print "temp"
-                temp = head.next
-            if temp < head:
+        if head.next is not None and head.next < head:
+            headtemp = head.next
+            self.listHead = headtemp
+            head.next = headtemp.next
+            headtemp.next = head
+        while head is not None:
+            print "temp"
+            temp = head.next
+            if temp is not None and temp < head:
                 head.next = temp.next
                 temp.next = head
-            
+            head = head.next
 
 llist = SLinkedList()
-llist.addVal(0)
+llist.addVal(5)
 llist.addVal(4)
 llist.addVal(3)
-llist.prepend(1)
+llist.addVal(2)
 llist.listPrint()
 print ""
-print "List Length:",llist.listLength()+1
+print "List Length:",llist.listLength()
 llist.sortList()
 llist.listPrint()
