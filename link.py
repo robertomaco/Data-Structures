@@ -7,6 +7,9 @@ class SLinkedList:
     def __init__(self):
         self.listHead = None
 
+    def createHead(self, value):
+        self.listHead = Node(value)
+
     def listPrint(self):
         printval = self.listHead
         while printval is not None:
@@ -14,9 +17,6 @@ class SLinkedList:
                 print "Head"
             print printval.data
             printval = printval.next
-
-    def createHead(self, value):
-        self.listHead = Node(value)
 
     def addVal(self, value):
         head = self.listHead
@@ -52,6 +52,7 @@ class SLinkedList:
         if head.data == key:
             temp = head.next
             self.listHead = temp
+            head = None
         else:
             while head.data != key and head.next is not None:
                 behind = head
@@ -59,3 +60,34 @@ class SLinkedList:
                 if head.next is not None:
                     ahead = head.next
             behind.next = ahead
+
+    def listLength(self):
+        count = 0
+        head = self.listHead
+        while head.next is not None:
+            head = head.next
+            count+=1
+        return count
+
+    def sortList(self):
+        head = self.listHead
+        while head.next is not None:
+            head = head.next
+            if head.next is not None:
+                print "temp"
+                temp = head.next
+            if temp < head:
+                head.next = temp.next
+                temp.next = head
+            
+
+llist = SLinkedList()
+llist.addVal(0)
+llist.addVal(4)
+llist.addVal(3)
+llist.prepend(1)
+llist.listPrint()
+print ""
+print "List Length:",llist.listLength()+1
+llist.sortList()
+llist.listPrint()
