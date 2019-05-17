@@ -1,3 +1,5 @@
+import random
+
 class Node: #initialises node
     def __init__(self, data=None):
         self.data = data
@@ -92,25 +94,22 @@ class SLinkedList:
         head = self.listHead
         val = self.listLength()
         count = 0
-        print "List length: ", val
-        while head is not None:
-            self.listPrint()
-            if head.next is not None and head == self.listHead and head.next.data < head.data:
-                headtemp = head.next
-                self.listHead = headtemp
-                head.next = headtemp.next
-                headtemp.next = head
-            elif head.next is not None and head != self.listHead and head.next.data < head.data:
-                temp = head.next
-                ahead = temp.next
-                temp.next = head
-                head.next = ahead
-            head = head.next
-
-llist = SLinkedList()
-llist.addVal(5)
-llist.addVal(4)
-llist.addVal(3)
-llist.addVal(2)
-llist.sortList()
-
+        print "List length: ", val, "\n"
+        while count <= val:
+            while head is not None:
+                if head is not None and head == self.listHead and head.next.data < head.data:
+                    headtemp = head.next
+                    self.listHead = headtemp
+                    head.next = headtemp.next
+                    headtemp.next = head
+                elif head is not None and head != self.listHead:
+                    if head.next is not None and head.next.data < head.data:
+                        ahead = head.next
+                        head.next = ahead.next
+                        ahead.next = head
+                        temp.next = ahead
+                    
+                temp = head
+                head = head.next
+            head = self.listHead
+            count+=1
