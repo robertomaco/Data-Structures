@@ -92,23 +92,23 @@ class SLinkedList:
 
     def sortList(self): #Sorts the list NOT WORKING
         head = self.listHead
-        val = self.listLength()
+        val = self.listLength() #Gets length of list
         count = 0
-        print "List length: ", val, "\n"
-        while count <= val:
+        while count <= val: #Loops the list to 
             while head is not None:
-                if head is not None and head == self.listHead and head.next.data < head.data:
+                if head is not None and head == self.listHead and head.next.data < head.data: #checks if the head needs to be swapped
                     headtemp = head.next
                     self.listHead = headtemp
                     head.next = headtemp.next
                     headtemp.next = head
                 elif head is not None and head != self.listHead:
-                    if head.next is not None and head.next.data < head.data:
+                    if head.next is not None and head.next.data < head.data: #checks if the node needs swapped
                         ahead = head.next
                         head.next = ahead.next
                         ahead.next = head
                         temp.next = ahead
-                    
+                    #temp->ahead->head
+
                 temp = head
                 head = head.next
             head = self.listHead
