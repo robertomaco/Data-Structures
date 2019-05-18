@@ -1,5 +1,3 @@
-import random
-
 class Node: #initialises node
     def __init__(self, data=None):
         self.data = data
@@ -90,7 +88,7 @@ class SLinkedList:
             count+=1
         return count
 
-    def sortList(self): #Sorts the list NOT WORKING
+    def sortList(self): #Sorts the list
         head = self.listHead
         val = self.listLength() #Gets length of list
         count = 0
