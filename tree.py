@@ -1,4 +1,3 @@
-
 class Node:
     def __init__(self, data):
         self.data = data
@@ -54,22 +53,39 @@ class binaryTree:
             print "Your tree is empty, but I'll create the root for you this time"
             self.createRoot(data)
         else:
-            if root.right is None and data > root.data:
-                root.right = newNode
-                root.right.parent = root
-            elif root.left is None and data < root.data:
-                root.left = newNode
-                root.left.parent = root
-            elif root.right is not None and data > root:
-                root = root.right
-            elif root.left is None and data < root:
-                root = root.left
-            while root.left is not None and root.right is not None:
-                if root.right is None and data > root:
-                    root.right = newNode
-                elif root.left is None and data < root:
-                    root.left = newNode
-                elif root.right is not None and data > root:
-                    root = root.right
-                elif root.left is None and data < root:
-                    root = root.left
+            while True:
+                if data < root.data:
+                    if root.left:    
+                        root = root.left
+                    else:
+                        root.left = newNode
+
+                elif data > root.data:
+                    if root.right:
+                        root = root.right
+                    else:
+                        root.right = newNode
+                
+                else:
+                    break
+
+    def inorder(self, node):
+        if node is not None:
+            self.inorder(node.left)
+            if node is self.root:
+                print "ROOT: ", node.data
+            else:
+                print node.data
+            self.inorder(node.right)
+
+    def preorder(self, node):
+        if node is not None:
+            print node.data
+            self.preorder(node.left)
+            self.preorder(node.right)
+
+    def postorder(self, node):
+        if node is not None:
+            self.postorder(node.left)
+            self.postorder(node.right)
+            print node.data
